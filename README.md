@@ -3,7 +3,7 @@ Hi!
 Thank you for a really exciting task.
 You can find the instruction how to run this Simple_Chat below:
 
-1. Clone this repository 
+1. Clone this repository: https://github.com/DenisPyProCourse/SimpleChatDRF.git
 2. Run command: pip install -r requirements.txt
 3. The following command: python manage.py createdb
 4. Finally: python manage.py runserver
