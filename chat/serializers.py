@@ -50,9 +50,9 @@ class DetailUserSerializer(serializers.ModelSerializer):
 
     def get_unread_messages(self, obj):
         """
-        I've used here User model from self.instance object. And then I get a queryset of objects where user is a
+        Get User model from self.instance object. And then take a queryset of objects where user is a
         participant of related to these messages Thread + user is not a sender + messages are not read yet.
-        Then I sent 'messages' to Serializer and order it in reverse order.
+        Then send 'messages' to Serializer and order it in reverse order.
         """
         user = self.instance
         messages = Message.objects.filter(Q(thread__participants=user) & ~Q(sender_id=user) & Q(is_read=False))
@@ -92,13 +92,13 @@ class ThreadSerializer(serializers.ModelSerializer):
 
     def get_messages(self, obj):
         """
-        I've got here the last message to display it in Thread List/Detail.
+        Get the last message to display it in Thread List/Detail.
         """
         return MessageSerializer(instance=obj.messages.order_by('-created').first()).data
 
     def to_representation(self, instance):
         """
-        If last message for Thread exists I show it.
+        If last message for Thread exists function will show it.
         """
         data = super().to_representation(instance)
         messages_representation = data.pop('messages')
@@ -108,7 +108,7 @@ class ThreadSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         """
-        I've checked here if the Thread with provided 2 participants exists. If yes you'll be redirected to this Thread.
+        Checked if the Thread with provided 2 participants exists. If yes you'll be redirected to this Thread.
         If no the Thread will be created.
         """
         participant = validated_data.pop('participants')

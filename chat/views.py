@@ -18,7 +18,7 @@ class ThreadAPIList(mixins.CreateModelMixin,
                    mixins.ListModelMixin,
                    GenericViewSet):
     """
-       ViewSet for Threads. I've deleted Update mixin due to task logic because it's nothing to amend in Threads.
+       ViewSet for Threads. Update mixin was deleted due to task logic because it's nothing to amend in Threads.
        List: get_queryset() is returning the queryset of Threads for logged in user in which user takes part.
        Create: create() will redirect us to the existed Thread or will create a new one and also redirect us to it.
        Retrieve/Delete: Thread details page allows us to delete this Thread.
@@ -31,7 +31,7 @@ class ThreadAPIList(mixins.CreateModelMixin,
 
     def get_queryset(self, *args, **kwargs):
         """
-        I show only threads in which request.user is participated.
+        Shows only threads in which request.user is participated.
         """
         return Thread.objects.filter(participants=self.request.user.id)
 
@@ -51,7 +51,7 @@ class ThreadAPIList(mixins.CreateModelMixin,
 
 class MessageApiList(generics.ListCreateAPIView):
     """
-    We got the list of messages for definite Thread and also can create the message there.
+    Got the list of messages for definite Thread and also can create the message there.
     """
     queryset = Message.objects.all()
     serializer_class = MessageSerializer
@@ -59,7 +59,7 @@ class MessageApiList(generics.ListCreateAPIView):
 
     def get_queryset(self):
         """
-        I've used Thread pk from POST to got the queryset of messages from this Thread.
+        Use Thread pk from POST to got the queryset of messages from this Thread.
         """
         pk = self.request.parser_context.get('kwargs')['pk_thread']
         return Message.objects.filter(thread_id=pk)
@@ -67,7 +67,7 @@ class MessageApiList(generics.ListCreateAPIView):
 
 class DetailMessageApi(generics.RetrieveUpdateAPIView):
     """
-    If reciever will open this page message.is_read will get True.
+    If reciever open this page message.is_read will get True.
     """
     queryset = Message.objects.all()
     serializer_class = MessageSerializer
@@ -88,7 +88,7 @@ class DetailMessageApi(generics.RetrieveUpdateAPIView):
 class UserAPIDetail(generics.RetrieveAPIView):
     """
     Show User details and unread messages for this User.
-    Is request.user != details user - request.user can't read the details.
+    If request.user != details user - request.user can't read the details.
     """
     queryset = User.objects.all()
     serializer_class = DetailUserSerializer
