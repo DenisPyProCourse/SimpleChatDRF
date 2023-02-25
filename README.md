@@ -4,9 +4,12 @@ Thank you for a really exciting task.
 You can find the instruction how to run this Simple_Chat below:
 
 1. Clone this repository: https://github.com/DenisPyProCourse/SimpleChatDRF.git
-2. Run command: pip install -r requirements.txt
-3. The following command: python manage.py createdb
-4. Finally: python manage.py runserver
+2. Install virtualenv: "pip install virtualenv" on the project directory
+3. Create virtual environment: virtualenv venv
+4. Activate: source venv/bin/activate
+5. Run command: pip install -r requirements.txt
+6. The following command: python manage.py createdb
+7. Finally: python manage.py runserver
 
 dump.json contains all necessary db data for testing. I use this dump in createdb command.
 
