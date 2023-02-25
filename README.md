@@ -15,9 +15,9 @@ Linux platform
 dump.json contains all necessary db data for testing. I use this dump in createdb command.
 
 Use JWT Tokens for surfing the api. Header is Bearer. 
-You can get JWT token: http://127.0.0.1:8000/api/v1/token/ (POST, you should input your login and pass)
-You can verify JWT token: http://127.0.0.1:8000/api/v1/token/verify/
-You can regresh JWT tokent: http://127.0.0.1:8000/api/v1/token/refresh/
+1. You can get JWT token: http://127.0.0.1:8000/api/v1/token/ (POST, you should input your login and pass); 
+2. You can verify JWT token: http://127.0.0.1:8000/api/v1/token/verify/
+3. You can regresh JWT tokent: http://127.0.0.1:8000/api/v1/token/refresh/
 
 You can registrate your own users (you don't need to be authenticated for registration), or use my with authentication details below:
 Registration url: http://127.0.0.1:8000/api/v1/register/
